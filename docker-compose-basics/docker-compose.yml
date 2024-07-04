@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    # Build the web service using the Dockerfile in the web directory
+    build:
+        context: ./web
+        dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+  redis:
+    # Build the redis service using the Dockerfile in the redis directory
+    build:
+        context: ./redis
+        dockerfile: ./Dockerfile
+    ports:
+      - "6379:6379"
